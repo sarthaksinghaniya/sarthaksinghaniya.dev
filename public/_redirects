@@ -1,6 +1,5 @@
-# Ten plik służy tylko do wewnętrznych przekierowań ścieżek np:
-# /stara-strona /nowa-strona 301
-# Przekierowania z www na non-www ustawiamy bezpośrednio w zakładce "Rules -> Redirect Rules" w panelu głównym domeny w Cloudflare.
+# Sanity CDN Proxy Rewrite
+/sanity-cdn/*   https://cdn.sanity.io/:splat   200!
 
 # SPA Fallback — ensures all virtual routes (e.g. /gallery, /about) serve index.html
-/*    /index.html   200
+/*              /index.html                    200
