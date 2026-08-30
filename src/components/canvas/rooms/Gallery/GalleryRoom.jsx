@@ -41,7 +41,7 @@ const FALLBACK_PROJECTS = [
         front: '/textures/gallery/revibe_front.webp',
         painted: '/textures/gallery/revibe_painted.webp',
         url: 'https://revibe-hub.netlify.app/',
-        description: 'Eco-tech platform that guides users to turn e-waste into practical DIY projects through AI vision scan and step-by-step build plans.',
+        description: 'Trash to treasure on steroids ⚡ AI computer vision scans random e-waste components and synthesizes wild DIY blueprints into working hardware gadgets.',
         techStack: ['/textures/gallery/reactlogo.webp', '/textures/gallery/tailwindlogo.webp', '/textures/gallery/jslogo.webp', '/textures/gallery/netlifylogo.webp']
     },
     {
@@ -50,7 +50,7 @@ const FALLBACK_PROJECTS = [
         front: '/textures/gallery/titan_front.webp',
         painted: '/textures/gallery/titan_painted.webp',
         url: 'https://github.com/sarthaksinghaniya/titan',
-        description: 'Autonomous AI system designed to debate, simulate, stress-test, and launch solutions to global societal challenges at scale.',
+        description: 'Multi-agent AI think-tank 🧠 Autonomous neural swarms simulate, debate, stress-test and ship solutions for complex codebases & real-world problems.',
         techStack: ['/textures/gallery/reactlogo.webp', '/textures/gallery/jslogo.webp', '/textures/gallery/htmllogo.webp', '/textures/gallery/csslogo.webp']
     },
     {
@@ -59,7 +59,7 @@ const FALLBACK_PROJECTS = [
         front: '/textures/gallery/nikhilyadav_front.webp',
         painted: '/textures/gallery/nikhilyadav_painted.webp',
         url: 'https://nikhilyadav.netlify.app/',
-        description: 'Portfolio of Nikhil Yadav (CDO at TechNeekX), showcasing intuitive UI/UX design, frontend development, and media engineering.',
+        description: 'Creative design playground for CDO @ TechNeekX ✨ Where buttery micro-interactions meet pixel-perfect frontend engineering and pure aesthetic juice.',
         techStack: ['/textures/gallery/reactlogo.webp', '/textures/gallery/jslogo.webp', '/textures/gallery/htmllogo.webp', '/textures/gallery/netlifylogo.webp']
     },
     {
@@ -68,7 +68,7 @@ const FALLBACK_PROJECTS = [
         front: '/textures/gallery/teamtechneekx_front.webp',
         painted: '/textures/gallery/teamtechneekx_painted.webp',
         url: 'https://teamtechneekx.netlify.app/',
-        description: 'Student-driven innovator community & builder ecosystem dedicated to learning, competing in hackathons, and shipping AI products.',
+        description: 'The builder syndicate 🚀 100+ devs, hackers & AI enthusiasts speedrunning hackathons, shipping crazy MVPs, and rewriting student innovation culture.',
         techStack: ['/textures/gallery/reactlogo.webp', '/textures/gallery/tailwindlogo.webp', '/textures/gallery/jslogo.webp', '/textures/gallery/netlifylogo.webp']
     },
     {
@@ -77,7 +77,7 @@ const FALLBACK_PROJECTS = [
         front: '/textures/gallery/fracturevision_front.webp',
         painted: '/textures/gallery/fracturevision_painted.webp',
         url: 'https://fracturevision-ai.streamlit.app/',
-        description: 'AI-powered medical radiograph diagnostic system for multi-class bone fracture classification featuring Grad-CAM explainability heatmaps.',
+        description: 'Deep learning X-Ray vision 🩻 Multi-class medical fracture detection with real-time Grad-CAM attention heatmaps. Speedrunning clinical diagnosis with AI.',
         techStack: ['/textures/gallery/reactlogo.webp', '/textures/gallery/jslogo.webp', '/textures/gallery/htmllogo.webp', '/textures/gallery/csslogo.webp']
     }
 ];

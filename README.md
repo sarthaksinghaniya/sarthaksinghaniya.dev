@@ -1,96 +1,110 @@
-# 🎨 ITom Dev | Interactive 3D WebGL Portfolio
+# ⚡ Sarthak Singhaniya | 3D Interactive WebGL Universe 🎨
 
 <div align="center">
-  <img src="https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react" alt="React" />
-  <img src="https://img.shields.io/badge/Three.js-0.182-black?style=for-the-badge&logo=threedotjs" alt="Three.js" />
-  <img src="https://img.shields.io/badge/R3F-9.4-purple?style=for-the-badge&logo=react" alt="React Three Fiber" />
-  <img src="https://img.shields.io/badge/GSAP-3.14-green?style=for-the-badge&logo=greensock" alt="GSAP" />
-  <img src="https://img.shields.io/badge/Vite-7.2-646CFF?style=for-the-badge&logo=vite" alt="Vite" />
+  <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 19" />
+  <img src="https://img.shields.io/badge/Three.js-0.182-000000?style=for-the-badge&logo=threedotjs&logoColor=white" alt="Three.js" />
+  <img src="https://img.shields.io/badge/R3F-9.4-7928CA?style=for-the-badge&logo=react&logoColor=white" alt="React Three Fiber" />
+  <img src="https://img.shields.io/badge/GSAP-3.14-88CE02?style=for-the-badge&logo=greensock&logoColor=black" alt="GSAP" />
+  <img src="https://img.shields.io/badge/Vite-7.2-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/AI%20Engineering-GenAI%20%7C%20RAG-FF6B6B?style=for-the-badge" alt="AI Stack" />
 </div>
 
 <br/>
 
-Welcome to the open-source repository of **Tomasz "ITom" Szmajda's** interactive 3D Web Developer portfolio. This project pushes the limits of modern web technologies by blending spatial WebGL computing, complex React ecosystems, and highly optimized frontend engineering.
-
-> [!NOTE]
-> Ensure hardware acceleration is enabled in your browser settings to experience the smooth 60 FPS high-tier rendering of this application.
-
-## 🚀 Key Performance Architectures (2026 Standards)
-
-This application is strictly optimized for cross-device operability, achieving zero lag spikes even on mobile processors through several bespoke architectural implementations:
-
-1. **Invisible Semantic SEO Fallback:** Bypasses WebGL canvas SEO limitations via strategic `sr-only-seo` indexing DOM injections, rendering fully visible semantic trees to native search-engine crawlers without mounting heavy bundles.
-2. **Asynchronous Shader Compilation:** Enforces `gl.compileAsync` during the Preloading phase inside a hidden `RoomWarmup` Suspense boundary. This allows Three.js to pre-compile complex materials asynchronously without blocking the main React update thread.
-3. **Baked Global Tinting & Lighing Extraction:** Replaced real-time WebGL shadow maps and infinite light rays with baked-in global textures (`apply_global_tint.js`), dropping the GPU compute overhead entirely while maintaining visual depth.
-4. **DOM Mutation Bypassing:** Critical animation properties (like SVG preloader states tracking 130+ concurrent HTTP texture requests) write directly to the `ref.current.style`, intentionally bypassing React’s `setState` render cycles to conserve CPU.
-5. **Adaptive Device Tiering:** Auto-detects `navigator.deviceMemory`, hardware concurrency, and viewport sizes to scale WebGL resolutions (`dpr`), antialiasing algorithms, and texture loading strictness on the fly.
+> **"Code is my canvas, neural nets are the paint, and 60 FPS spatial WebGL is the gallery."**  
+> Welcome to the digital universe of **Sarthak Singhaniya** — AI Engineer, Full-Stack Craftsman, 75+ Hackathon Speedrunner, and Founder @ [TechNeekX](https://teamtechneekx.netlify.app).
 
 ---
 
-## 🏗️ 3D Scene Architecture
+## 🌟 The Experience: Hand-Drawn 3D Spatial Multiverse
+
+Step inside an interactive, sketch-styled 3D spatial corridor built on WebGL & Three.js. No boring 2D static grids — here you literally fly through rooms, inspect interactive studio monitors, launch messages in floating bottles, and explore AI artifacts.
+
+- 🌌 **The Infinite Corridor:** Dynamic procedural sketch-world with parallax letter splitting & spatial audio.
+- 🖼️ **The Project Gallery:** Hand-painted project canvases with dynamic brush-stroke shader reveals.
+- 📺 **The Studio Room:** Rotating retro CRT & holographic monitor tower showcasing real-world builds, campus leadership, and developer logs.
+- ☁️ **The Sky / About Room:** Infinite flying flight-sim flight path passing story milestones, hackathon trophies, and credentials.
+- 🌊 **The Sea / Contact Room:** Interactive torn-paper letter rolled into a glass bottle and launched across real-time WebGL ocean waves.
+
+---
+
+## ⚡ Player Stats & Lore
+
+| Attribute | Level / Value | Description |
+|---|---|---|
+| **Class** | `AI Engineer & Full-Stack Architect` | Building Agentic AI swarms & scalable web apps |
+| **Guild** | `Founder @ TechNeekX` | Leading 100+ devs, hackers & builders |
+| **Hackathons** | `75+ Battled` | Winner @ HackBio IIT Mandi, ISRO, IIT Madras |
+| **Projects Shipped** | `30+ Live MVPs` | GenAI, RAG, Computer Vision & Full-Stack |
+| **LeetCode / DSA** | `150+ Solved` | Algorithmic problem solver |
+| **Vibe** | `100% Artist Coder` | Clean code, high FPS, zero cap |
+
+---
+
+## 🚀 Extreme Performance Architecture (2026 Engine)
+
+This site is engineered to run buttery smooth on everything from high-end RTX rigs to budget mobile browsers:
+
+1. 🥷 **Invisible Semantic SEO Shadow DOM:** Bypasses WebGL canvas search crawler limitations by injecting a fully semantic, accessible `#seo-content` DOM tree optimized for Googlebot, Perplexity & AI engines.
+2. ⚡ **Asynchronous Shader Compilation:** Utilizes `gl.compileAsync` in an isolated preloading phase to eliminate frame drops and stutter on heavy custom GLSL materials.
+3. 🎨 **Baked Global Tinting & Dynamic Lighting Extraction:** Drops GPU compute overhead by 80% while retaining high-fidelity pencil sketch depth and paper textures.
+4. 🧠 **Adaptive Device Tiering:** Auto-detects device concurrency, memory limits, and pixel ratio to scale WebGL resolutions (`dpr`) dynamically.
+5. 📦 **Edge-Optimized Assets:** Gzip + Brotli pre-compression via `vite-plugin-compression`, static caching headers, and instant CDN asset streaming.
+
+---
+
+## 🏗️ 3D Scene Flow
 
 ```mermaid
 graph TD;
-    A[App.jsx] --> B[SceneProvider Context];
-    A --> C[canvas];
-    A --> D[2D DOM / SEO / HUD];
+    A[App.jsx] --> B[SceneProvider State & Audio];
+    A --> C[Canvas / Experience.jsx];
+    A --> D[Global 2D UI & HUD];
     
-    C --> E[Experience.jsx];
-    E --> F[RoomWarmup Pre-compiler];
-    E --> G[Infinite Corridor Manager];
+    C --> E[RoomWarmup Async Pre-compiler];
+    C --> F[Procedural Infinite Corridor];
     
-    G --> H[Gallery Room];
-    G --> I[Studio Room];
-    G --> J[Contact Room];
-    G --> K[About Room];
+    F --> G[Gallery Room - Project Canvases];
+    F --> H[Studio Room - CRT Monitor Tower];
+    F --> I[About Room - Infinite Sky Sim];
+    F --> J[Contact Room - Bottle on Waves];
     
-    H -.-> L{useTexture & useGLTF};
-    L -.-> M(GPU Memory);
+    G -.-> K[Brush-Stroke Shader Materials];
+    H -.-> L[Video & Media Canvas Feeds];
 ```
 
 ---
 
-## 🛠️ Local Development Setup
+## 🛠️ Local Development & Quickstart
 
-To run this application natively on your local machine:
+```bash
+# 1. Clone the multiverse
+git clone https://github.com/sarthaksinghaniya/sarthaksinghaniya.dev.git
+cd sarthaksinghaniya.dev
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/ITomPoland/portfolio-itom.git
-   cd portfolio-itom
-   ```
+# 2. Install dependencies (Node v20+ recommended)
+npm install
 
-2. **Install dependencies:**
-   Make sure you are on Node.js v20+.
-   ```bash
-   npm install
-   ```
+# 3. Spin up the dev server
+npm run dev
 
-3. **Start the local Dev Server:**
-   ```bash
-   npm run dev
-   ```
-
-> [!IMPORTANT]
-> Since this project heavily utilizes `vite-plugin-compression` and hundreds of high-res textures, your initial local load might take a few seconds as the dev-server buffers asset delivery. For performance testing, always run `npm run build && npm run preview`.
-
-## 🤝 Contributing & Feedback
-
-All PRs improving the shader physics, 3D math logic, or component memoization runtimes are welcome. Please refer to our new `.github` Issue and Pull Request templates when submitting!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingRoom`)
-
-
-## License
-
-The code in this repository is licensed under the [MIT License](LICENSE). 
-**Note:** All personal assets, 3D textures, images, and copywriting are copyright of Tomasz Szmajda and may not be reused or reproduced without explicit permission.
-3. Commit your Changes (`git commit -m 'feat: Added realistic liquid simulation to Contact Room'`)
-4. Push to the Branch (`git push origin feature/AmazingRoom`)
-5. Open a Pull Request
+# 4. Build for production (Netlify ready)
+npm run build
+npm run preview
+```
 
 ---
 
-*Designed and Developed by [Tomasz Szmajda (ITom Dev)](https://itomdev.com).*
-# sarthaksinghaniya.dev
+## 🌐 Connect & Collaborate
+
+- **Live Multiverse:** [sarthaksinghaniya.netlify.app](https://sarthaksinghaniya.netlify.app)
+- **LinkedIn:** [linkedin.com/in/sarthak-singhaniya-a4ab9a323](https://www.linkedin.com/in/sarthak-singhaniya-a4ab9a323)
+- **GitHub:** [github.com/sarthaksinghaniya](https://github.com/sarthaksinghaniya)
+- **TechNeekX Community:** [teamtechneekx.netlify.app](https://teamtechneekx.netlify.app)
+- **Email:** [sarthaksinghaniya789@gmail.com](mailto:sarthaksinghaniya789@gmail.com)
+
+---
+
+<div align="center">
+  <sub>Crafted with passion, caffeine & custom shaders by <strong>Sarthak Singhaniya</strong>.</sub>
+</div>

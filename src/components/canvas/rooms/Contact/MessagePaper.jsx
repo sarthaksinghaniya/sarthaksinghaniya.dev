@@ -596,7 +596,7 @@ const MessagePaper = ({ position = [0, 0.05, 2], onSend }) => {
                 <InteractiveTextField
                     isActive={activeField === 'email'}
                     value={email}
-                    placeholder="email..."
+                    placeholder="your email (drop it here)..."
                     cursor={cursorVisible ? '|' : ' '}
                     onClick={() => { setActiveField('email'); setTimeout(() => emailInputRef.current?.focus(), 10); }}
                     // Layout
@@ -614,7 +614,7 @@ const MessagePaper = ({ position = [0, 0.05, 2], onSend }) => {
                 <InteractiveTextField
                     isActive={activeField === 'subject'}
                     value={subject}
-                    placeholder="subject..."
+                    placeholder="subject / project vibe / crazy idea..."
                     cursor={cursorVisible ? '|' : ' '}
                     onClick={() => { setActiveField('subject'); setTimeout(() => subjectInputRef.current?.focus(), 10); }}
                     // Layout
@@ -632,7 +632,7 @@ const MessagePaper = ({ position = [0, 0.05, 2], onSend }) => {
                 <InteractiveTextField
                     isActive={activeField === 'message'}
                     value={formattedMessage}
-                    placeholder="message..."
+                    placeholder="write your message / AI collab / pitch..."
                     cursor={cursorVisible ? '|' : ' '}
                     onClick={() => { setActiveField('message'); setTimeout(() => hiddenInputRef.current?.focus(), 10); }}
                     // Layout
