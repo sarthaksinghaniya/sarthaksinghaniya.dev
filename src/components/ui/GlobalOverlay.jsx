@@ -90,6 +90,13 @@ const PlatformIcon = ({ name, size = 18 }) => {
                     <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                 </svg>
             );
+        case 'x':
+        case 'twitter':
+            return (
+                <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+            );
         default:
             return (
                 <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -157,30 +164,20 @@ const ContentCard = ({ content, isOpen, onClose, isMobile }) => {
     const isProfile = content.layout === 'profiles_grid' || 
                       content.id === 'award-profiles' || 
                       content.id === 'award-other' || 
-                      label === 'PROFILES' || 
-                      label === 'ECOSYSTEM' ||
-                      content.title?.toLowerCase().includes('sarthak') ||
-                      content.title?.toLowerCase().includes('profile');
+                      Boolean(content.items && (label === 'PROFILES' || label === 'ECOSYSTEM' || content.title?.toLowerCase().includes('sarthak') || content.title?.toLowerCase().includes('profile')));
 
     const isHackathon = !isProfile && (
                         content.layout === 'hackathons_grid' || 
                         content.id === 'award-hackathons' || 
                         content.id === 'award-sotm' || 
-                        label === 'HACKATHONS' || 
-                        label === 'COMPETITIONS' || 
-                        label === 'ACHIEVEMENTS' ||
-                        content.title?.toLowerCase().includes('hackathon'));
+                        Boolean(content.sections && (label === 'HACKATHONS' || label === 'COMPETITIONS' || label === 'ACHIEVEMENTS' || content.title?.toLowerCase().includes('hackathon'))));
 
     const isCertificate = !isProfile && !isHackathon && (
                           content.layout === 'certificates_grid' || 
                           content.layout === 'certificate_grid' || 
                           content.id === 'award-certificates' || 
                           content.id === 'award-sotd' || 
-                          label === 'CERTIFICATES' || 
-                          label === 'CREDENTIALS' ||
-                          label === 'PRESTIGE' ||
-                          content.title?.toLowerCase().includes('certificat') || 
-                          content.title?.toLowerCase().includes('award'));
+                          Boolean(content.sections && (label === 'CERTIFICATES' || label === 'CREDENTIALS' || label === 'PRESTIGE' || content.title?.toLowerCase().includes('certificat') || content.title?.toLowerCase().includes('award'))));
 
     const isWideLayout = isProfile || isHackathon || isCertificate;
 

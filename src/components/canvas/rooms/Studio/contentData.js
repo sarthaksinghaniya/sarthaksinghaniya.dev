@@ -155,6 +155,28 @@ const RAW_CONTENT_DATA = [
         readTime: 'Led Hackathon',
     },
 
+    // ============ Hackathon Judging & Mentorship ============
+    {
+        id: 'hack-judge',
+        platform: 'linkedin',
+        title: 'Hackathon Judge: 2 Hackathons Evaluated ⚖️🏆',
+        description: 'Served as an official Hackathon Judge across 2 major hackathons! Evaluated 100+ innovative AI solutions, system architectures, UI/UX designs, and technical problem-solving to select winning builder teams.',
+        thumbnail: null,
+        url: 'https://www.linkedin.com/in/sarthak-singhaniya-a4ab9a323',
+        date: '2026-07-22',
+        readTime: 'Judge (2 Hackathons)',
+    },
+    {
+        id: 'hack-mentor',
+        platform: 'linkedin',
+        title: 'Hackathon Mentor: 3 Hackathons Guided 🧠🚀',
+        description: 'Empowered emerging engineering teams as an official Mentor across 3 hackathons! Guided student developers through rapid MVP prototyping, AI/ML pipeline debugging, API integrations, and pitch preparation to help them ship winning solutions.',
+        thumbnail: null,
+        url: 'https://www.linkedin.com/in/sarthak-singhaniya-a4ab9a323',
+        date: '2026-07-18',
+        readTime: 'Mentor (3 Hackathons)',
+    },
+
     // ============ Coding Profiles & DSA Grind ============
     {
         id: 'blog-leetcode',
@@ -210,25 +232,28 @@ const RAW_CONTENT_DATA = [
 
 const ytTextures = ['/textures/studio/tvfront_filmikprojektdlamultiego.webp', '/textures/studio/tvfront_filmikedytowaniezdjec.webp'];
 const ytPaintedTextures = ['/textures/studio/tvfront_filmikprojektdlamultiego_painted.webp', '/textures/studio/tvfront_filmikedytowaniezdjec_painted.webp'];
-const blogTextures = ['/textures/studio/monitorfront_postnafbdoublewinner.webp'];
-const blogPaintedTextures = ['/textures/studio/monitorfront_postnafbdoublewinner_painted.webp'];
-const ttTextures = ['/textures/studio/phonefront_followmeontiktok.webp'];
-const ttPaintedTextures = ['/textures/studio/phonefront_followmeontiktok_painted.webp'];
+const blogTextures = ['/textures/studio/monitorfront_postnafbdoublewinner.webp', '/textures/studio/monitor_front.webp'];
+const blogPaintedTextures = ['/textures/studio/monitorfront_postnafbdoublewinner_painted.webp', '/textures/studio/monitor_front_painted.webp'];
+const ttTextures = ['/textures/studio/phonefront_followmeontiktok.webp', '/textures/studio/phone_front.webp'];
+const ttPaintedTextures = ['/textures/studio/phonefront_followmeontiktok_painted.webp', '/textures/studio/phone_front_painted.webp'];
 
 let ytIdx = 0, blogIdx = 0, ttIdx = 0;
 let ytPIdx = 0, blogPIdx = 0, ttPIdx = 0;
 
 export const CONTENT_DATA = RAW_CONTENT_DATA.map((item) => {
+    const isTv = item.platform === 'youtube';
+    const isMonitor = item.platform === 'blog' || item.platform === 'linkedin' || item.platform === 'x' || item.platform === 'codrops';
+
     return {
         ...item,
         frontTexture: item.frontTexture || (
-            item.platform === 'youtube' ? ytTextures[ytIdx++ % ytTextures.length] :
-                item.platform === 'blog' ? blogTextures[blogIdx++ % blogTextures.length] :
+            isTv ? ytTextures[ytIdx++ % ytTextures.length] :
+                isMonitor ? blogTextures[blogIdx++ % blogTextures.length] :
                     ttTextures[ttIdx++ % ttTextures.length]
         ),
         paintedFrontTexture: item.paintedFrontTexture || (
-            item.platform === 'youtube' ? ytPaintedTextures[ytPIdx++ % ytPaintedTextures.length] :
-                item.platform === 'blog' ? blogPaintedTextures[blogPIdx++ % blogPaintedTextures.length] :
+            isTv ? ytPaintedTextures[ytPIdx++ % ytPaintedTextures.length] :
+                isMonitor ? blogPaintedTextures[blogPIdx++ % blogPaintedTextures.length] :
                     ttPaintedTextures[ttPIdx++ % ttPaintedTextures.length]
         )
     };

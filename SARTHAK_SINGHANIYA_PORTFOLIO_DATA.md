@@ -211,6 +211,18 @@ These are displayed as portfolio/game-style stats and should be treated as self-
 - Connected students with startup ecosystem opportunities and resources.
 - Facilitated campus engagement programs.
 
+### Hackathon Judge & Jury
+
+- **Experience:** Evaluated 2 Hackathons
+- Served as an official Hackathon Judge across 2 major hackathons, evaluating 100+ innovative AI solutions, web applications, and developer prototypes.
+- Assessed technical architecture, algorithmic problem-solving, UI/UX polish, and pitch viability to select winning builder teams.
+
+### Hackathon Mentor
+
+- **Experience:** Mentored across 3 Hackathons
+- Empowered emerging engineering teams as an official Mentor across 3 hackathons.
+- Guided student developers through rapid MVP scoping, AI model integration, backend debugging, and pitching strategies to turn 3 AM ideas into production-ready demos.
+
 ## 7. Projects
 
 All project GitHub and demo fields in the current source are `#` placeholders. Replace them only with verified URLs.
@@ -323,6 +335,8 @@ All project GitHub and demo fields in the current source are `#` placeholders. R
 
 - Winner, HackBio IIT Mandi
 - Founder and Lead, TechNeekX Community
+- Official Judge across 2 Hackathons
+- Technical Mentor across 3 Hackathons
 - Participated in 70+ national and international hackathons
 - Campus Ambassador, E-Cell IIT Bombay
 - Completed 5 industry internships (source claim; detailed records currently show 3 internships plus 2 other roles; VERIFY)

@@ -1,5 +1,6 @@
 import { useScene } from '../../context/SceneContext';
 import { useGalleryProjects, useStudioContent, useAwards } from '../../hooks/useSanityData';
+import { CONTENT_DATA } from '../canvas/rooms/Studio/contentData';
 import '../../styles/ScreenReaderOverlay.scss';
 
 /**
@@ -15,6 +16,7 @@ const ScreenReaderOverlay = () => {
     // Pobieranie danych do wygenerowania niewidocznego HTML-a dla SEO / robotów
     const projects = useGalleryProjects();
     const studio = useStudioContent();
+    const studioItems = (studio && studio.length > 0) ? studio : CONTENT_DATA;
     const awards = useAwards();
 
     return (
@@ -126,9 +128,9 @@ const ScreenReaderOverlay = () => {
                                 <h3>The Studio</h3>
                                 <p>Explore my experience and skills on rotating monitors. Click a monitor to read detailed information about my work.</p>
 
-                                {studio && studio.length > 0 && (
+                                {studioItems && studioItems.length > 0 && (
                                     <ul>
-                                        {studio.map((s, i) => (
+                                        {studioItems.map((s, i) => (
                                             <li key={i}>
                                                 <h4>{s.title} ({s.platform})</h4>
                                                 <p>{s.description}</p>
