@@ -12,28 +12,28 @@ import { useScene } from '../context/SceneContext';
 const ROOM_META = {
     null: {
         path: '/',
-        title: 'Sarthak Singhaniya — AI Wizard & TechNeekX Founder 🚀',
-        description: 'Interactive 3D portfolio of Sarthak Singhaniya — AI Architect, Full-Stack Dev & Founder @ TechNeekX. Shipping cracked AI agents, RAG & GenAI magic.',
+        title: 'Sarthak Singhaniya (Sarthak Singhania) — AI Wizard & TechNeekX Founder 🚀',
+        description: 'Interactive 3D portfolio of Sarthak Singhaniya (also searched as Sarthak Singhania) — AI Architect, Full-Stack Dev & Founder @ TechNeekX. 90+ Hackathons, 30+ Projects.',
     },
     about: {
         path: '/about',
-        title: 'About — Sarthak Singhaniya (AI Wizard)',
-        description: 'Discover the lore of Sarthak Singhaniya — AI Engineer, 90+ Hackathons (3+ Wins, 6+ Organized, 3+ Mentored, 2+ Judged), and Founder @ TechNeekX. 30+ projects cooked.',
+        title: 'About — Sarthak Singhaniya (Sarthak Singhania)',
+        description: 'Discover the story of Sarthak Singhaniya — AI Engineer, 90+ Hackathons (3+ Wins, 6+ Organized, 3+ Mentored, 2+ Judged), and Founder @ TechNeekX.',
     },
     gallery: {
         path: '/gallery',
-        title: 'Gallery & Projects — Sarthak Singhaniya',
-        description: 'Explore cracked AI & full-stack projects by Sarthak Singhaniya: EcoSphere AI, Revibe Hub, TTM-AI, LexNode AI, Titan, and FlowX.',
+        title: 'Gallery & AI Projects — Sarthak Singhaniya',
+        description: 'Explore AI & full-stack projects by Sarthak Singhaniya: EcoSphere AI, Revibe Hub, TTM-AI, LexNode AI, Titan, and FlowX.',
     },
     studio: {
         path: '/studio',
-        title: 'The Studio — Sarthak Singhaniya',
-        description: 'Explore Sarthak Singhaniya\'s tech loadout, blog posts, community initiatives, and AI engineering insights.',
+        title: 'The Studio & Experience — Sarthak Singhaniya',
+        description: 'Explore Sarthak Singhaniya\'s tech stack, hackathon judge/mentor credentials, blog posts, community initiatives, and AI engineering insights.',
     },
     contact: {
         path: '/contact',
-        title: 'Contact — Sarthak Singhaniya',
-        description: 'Connect with Sarthak Singhaniya (AI Wizard & Founder @ TechNeekX). Find LinkedIn, GitHub, WhatsApp, and LeetCode ranks.',
+        title: 'Contact & Coding Profiles — Sarthak Singhaniya',
+        description: 'Connect with Sarthak Singhaniya (Sarthak Singhania). Verified GitHub, LeetCode (150+ solved), Unstop (300+ challenges), Kaggle, and LinkedIn.',
     },
 };
 

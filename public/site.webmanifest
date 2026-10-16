@@ -1,0 +1,20 @@
+{
+  "name": "Sarthak Singhaniya — AI Engineer & Founder @ TechNeekX",
+  "short_name": "Sarthak Singhaniya",
+  "description": "Interactive 3D WebGL Portfolio of Sarthak Singhaniya (Sarthak Singhania) — AI Engineer, Full-Stack Developer & Founder @ TechNeekX. 90+ Hackathons, 30+ Projects.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fafafa",
+  "theme_color": "#fafafa",
+  "orientation": "portrait-primary",
+  "lang": "en-US",
+  "categories": ["education", "developer", "portfolio", "technology"],
+  "icons": [
+    {
+      "src": "/favico.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
