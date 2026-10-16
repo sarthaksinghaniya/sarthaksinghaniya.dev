@@ -4,6 +4,7 @@ import { Text, PositionalAudio } from '@react-three/drei';
 import * as THREE from 'three';
 import gsap from 'gsap';
 import SkyChunk, { CHUNK_LENGTH, ROOM_Z } from './SkyChunk';
+import PaperAirplane from './PaperAirplane';
 import { useScene } from '../../../../context/SceneContext';
 import '../../shaders/RevealBasicMaterial'; // Registers brush-stroke reveal for BasicMaterial
 import { isTouchDevice } from '../../../../utils/deviceDetect';
@@ -31,7 +32,7 @@ export const BALLOON_AUDIO_SETTINGS = {
 /**
  * Reusable Button Component with Hover Effect + Brush-Stroke Reveal
  */
-const AwardButton = ({ onClick, texture, paintedTexture, width, height, position, onHoverChange }) => {
+const AwardButton = ({ onClick, texture, paintedTexture, width, height, position, onHoverChange, label = 'VIEW', fontSize = 0.25 }) => {
     const isTouch = isTouchDevice();
     const meshRef = useRef();
     const buttonRevealRef = useRef(); // RevealBasicMaterial ref for button sketch
@@ -128,21 +129,21 @@ const AwardButton = ({ onClick, texture, paintedTexture, width, height, position
             </mesh>
             <Text
                 position={[0, 0, 0.05]}
-                fontSize={0.25}
+                fontSize={fontSize}
                 color="#1a1a1a"
                 anchorX="center"
                 anchorY="middle"
                 font="/fonts/CabinSketch-Bold.ttf"
             >
-                VIEW
+                {label}
             </Text>
         </group>
     );
 };
 
 // Story milestones configuration
-// Each milestone appears once per "story cycle" (4 chunks = 160 units)
-const STORY_CYCLE_LENGTH = 160;
+// Each milestone appears once per "story cycle" (5 chunks = 200 units)
+const STORY_CYCLE_LENGTH = 200;
 
 // === TWARDA LINIA ZANIKANIA DLA MILESTONES (WORLD SPACE) ===
 // Pokój About jest na Z = -25, więc -25 to drzwi pokoju
@@ -151,9 +152,9 @@ const MILESTONE_CORRIDOR_CLIP_Z = -8.0;
 
 const InfiniteSkyManager = ({ scrollProgressRef }) => {
     // PRE-CALCULATED FOR scrolProgress = 0
-    // currentChunk = floor(0/40) = 0 -> [-1, 0, 1, 2]
-    const [activeChunks, setActiveChunks] = useState([-1, 0, 1, 2]);
-    // currentStoryCycle = floor(0/160) = 0 -> [-1, 0, 1]
+    // currentChunk = floor(0/40) = 0 -> [-1, 0, 1, 2, 3]
+    const [activeChunks, setActiveChunks] = useState([-1, 0, 1, 2, 3]);
+    // currentStoryCycle = floor(0/200) = 0 -> [-1, 0, 1]
     const [activeStoryCycles, setActiveStoryCycles] = useState([-1, 0, 1]);
     const worldRef = useRef();
 
@@ -183,6 +184,7 @@ const InfiniteSkyManager = ({ scrollProgressRef }) => {
             currentChunk,
             currentChunk + 1,
             currentChunk + 2,
+            currentChunk + 3,
         ];
 
         const chunksNeedUpdate = shouldBeActiveChunks.some(c => !activeChunks.includes(c)) ||
@@ -220,7 +222,7 @@ const InfiniteSkyManager = ({ scrollProgressRef }) => {
                 />
             ))}
 
-            {/* === STORY MILESTONES (loop every 160 units) === */}
+            {/* === STORY MILESTONES (loop every 200 units) === */}
             {activeStoryCycles.map((cycleIndex) => (
                 <group key={`story-cycle-${cycleIndex}`}>
                     {/* === INTRO MILESTONE === */}
@@ -229,22 +231,27 @@ const InfiniteSkyManager = ({ scrollProgressRef }) => {
                         scrollProgressRef={scrollProgressRef}
                     />
 
+                    {/* === HACKATHONS MILESTONE (90+ BATTLES) === */}
+                    <HackathonsMilestone
+                        z={-(cycleIndex * STORY_CYCLE_LENGTH + 55)}
+                        scrollProgressRef={scrollProgressRef}
+                    />
+
                     {/* === AWARDS MILESTONE === */}
                     <AwardsMilestone
-                        z={-(cycleIndex * STORY_CYCLE_LENGTH + 55)}
+                        z={-(cycleIndex * STORY_CYCLE_LENGTH + 95)}
                         scrollProgressRef={scrollProgressRef}
                     />
 
                     {/* === JOURNEY MILESTONE === */}
                     <JourneyMilestone
-                        z={-(cycleIndex * STORY_CYCLE_LENGTH + 95)}
+                        z={-(cycleIndex * STORY_CYCLE_LENGTH + 135)}
                         scrollProgressRef={scrollProgressRef}
                     />
 
                     {/* === SKILLS MILESTONE === */}
-
                     <SkillsMilestone
-                        z={-(cycleIndex * STORY_CYCLE_LENGTH + 135)}
+                        z={-(cycleIndex * STORY_CYCLE_LENGTH + 175)}
                         scrollProgressRef={scrollProgressRef}
                     />
                 </group>
@@ -417,9 +424,9 @@ const AWARDS_DATA = {
     featured: {
         id: 'award-featured',
         layout: 'hackathons_grid',
-        title: '70+ Hackathons & Competitions',
-        subtitle: 'Competing, building and solving real-world problems across AI, technology, entrepreneurship and innovation.',
-        count: '70+',
+        title: '90+ Hackathons & Competitions',
+        subtitle: 'Competing, building, judging, mentoring and organizing across 90+ hackathons in AI, tech & innovation.',
+        count: '90+',
         platformConfig: {
             label: 'ACHIEVEMENTS',
             color: '#1a1a1a'
@@ -516,13 +523,13 @@ const AWARDS_DATA = {
     sotm: {
         id: 'award-hackathons',
         layout: 'hackathons_grid',
-        title: '70+ Hackathons & Competitions',
-        subtitle: 'Competing, building and solving real-world problems across AI, technology, entrepreneurship and innovation.',
-        count: '70+',
+        title: '90+ Hackathons & Competitions',
+        subtitle: 'Competing, building, judging, mentoring and organizing across 90+ hackathons in AI, tech & innovation.',
+        count: '90+',
         archiveUrl: 'https://drive.google.com/drive/u/0/folders/1CBeJ9os9s92ZQOpbHguHTmKQ0fOCLsYK',
         sections: [
             {
-                sectionTitle: 'WINNERS',
+                sectionTitle: 'WINNERS (3+)',
                 items: [
                     {
                         name: 'HackBio — IIT Mandi',
@@ -533,6 +540,59 @@ const AWARDS_DATA = {
                         isWinner: true,
                         description: 'Winner at HackBio, demonstrating technical problem-solving, innovation and rapid product development.',
                         url: 'https://drive.google.com/drive/u/0/folders/1CBeJ9os9s92ZQOpbHguHTmKQ0fOCLsYK'
+                    }
+                ]
+            },
+            {
+                sectionTitle: 'ORGANIZED & LED (6+)',
+                items: [
+                    {
+                        name: 'Kalpathon Hackathon',
+                        achievement: 'ORGANIZER & LEAD',
+                        badge: 'LEAD ORGANIZER',
+                        organizer: 'Kalpathon / TechNeekX',
+                        category: 'National Hackathon',
+                        description: 'Led and organized Kalpathon! Spearheading national builder challenges, live hacking, and open-source project showcases.',
+                        url: 'https://github.com/topics/kalpathonhackathon'
+                    },
+                    {
+                        name: 'Innvedx Hackathon',
+                        achievement: 'HOST & DIRECTOR',
+                        badge: 'DIRECTOR',
+                        organizer: 'Innvedx Ecosystem',
+                        category: 'Innovation Hackathon',
+                        description: 'Directed and hosted the Innvedx Hackathon ecosystem, uniting student builders, AI innovators, and rapid shipping sprints.',
+                        url: 'https://github.com/topics/innvedxhackathon'
+                    },
+                    {
+                        name: 'TNX Codathon & Workshops',
+                        achievement: 'FOUNDER & HOST',
+                        badge: 'FOUNDER',
+                        organizer: 'TechNeekX Community',
+                        category: 'Community Hackathons',
+                        description: 'Organized internal coding marathons, AI build sprints, and startup ideation challenges for 100+ developer community members.',
+                        url: 'https://teamtechneekx.netlify.app'
+                    }
+                ]
+            },
+            {
+                sectionTitle: 'JUDGING & MENTORSHIP',
+                items: [
+                    {
+                        name: 'Official Hackathon Judge (2 Hackathons)',
+                        achievement: 'OFFICIAL JURY (2x)',
+                        badge: 'OFFICIAL JURY',
+                        category: 'Hackathon Jury / Evaluation',
+                        description: 'Served as an official Judge across 2 major hackathons, evaluating 100+ AI agents, system architectures, UI/UX, and live pitch demos.',
+                        url: 'https://www.linkedin.com/in/sarthak-singhaniya-a4ab9a323'
+                    },
+                    {
+                        name: 'Technical Mentor (3 Hackathons)',
+                        achievement: 'TECHNICAL MENTOR (3x)',
+                        badge: 'OFFICIAL MENTOR',
+                        category: 'Engineering Mentorship',
+                        description: 'Mentored participant teams across 3 hackathons, guiding builders through rapid MVP prototyping, AI/ML pipeline debugging, and pitch preparation.',
+                        url: 'https://www.linkedin.com/in/sarthak-singhaniya-a4ab9a323'
                     }
                 ]
             },
@@ -567,7 +627,7 @@ const AWARDS_DATA = {
                 ]
             },
             {
-                sectionTitle: 'IIT / NATIONAL LEVEL',
+                sectionTitle: 'IIT / NATIONAL PARTICIPATIONS (90+)',
                 items: [
                     {
                         name: 'Bharatiya Antariksh Hackathon — ISRO',
@@ -724,6 +784,494 @@ const AWARDS_DATA = {
             color: '#1a1a1a'
         }
     }
+};
+
+/**
+ * HACKATHONS STAT CARDS DATA
+ * 5 Creative Battle Nodes:
+ * - Participated: 90+
+ * - Won: 3+
+ * - Organised: 6+
+ * - Mentored: 3+
+ * - Judged: 2+
+ */
+const HACKATHON_CARDS_DATA = [
+    {
+        id: 'participated',
+        stat: '90+',
+        label: 'PARTICIPATED',
+        badge: '⚡ ALL-NIGHTER BEAST',
+        tagline: '90+ hackathons across India & global stages',
+        color: '#FFB800',
+        bg: '#FFFDF0',
+        x: 0,
+        y: 1.45,
+        z: 0.3,
+        width: 3.2,
+        height: 2.2,
+        phase: 0,
+        subtext: 'ISRO, IIT Mandi, IIT Madras, IIT Kharagpur...',
+        isMaster: true
+    },
+    {
+        id: 'won',
+        stat: '3+',
+        label: 'WON PODIUM',
+        badge: '🏆 CHAMPION',
+        tagline: 'Winner at top hackathons & tech cups',
+        color: '#FF6B35',
+        bg: '#FFF9F5',
+        x: -4.3,
+        y: 2.2,
+        z: -0.2,
+        width: 2.7,
+        height: 2.1,
+        phase: 1.5,
+        subtext: 'HackBio IIT Mandi & high-stakes coding arenas'
+    },
+    {
+        id: 'organised',
+        stat: '6+',
+        label: 'ORGANISED',
+        badge: '🚀 HOST & LEAD',
+        tagline: 'Spearheading national builder ecosystems',
+        color: '#00B4D8',
+        bg: '#F0FBFF',
+        x: 4.3,
+        y: 2.2,
+        z: -0.2,
+        width: 2.7,
+        height: 2.1,
+        phase: 3.0,
+        subtext: 'Kalpathon, Innvedx & TNX Codathon challenges'
+    },
+    {
+        id: 'mentored',
+        stat: '3+',
+        label: 'MENTORED',
+        badge: '🧠 TECH GUIDE',
+        tagline: 'Guiding 30+ teams to ship winning solutions',
+        color: '#2EC4B6',
+        bg: '#F0FDF8',
+        x: -2.8,
+        y: -1.2,
+        z: 0.1,
+        width: 2.7,
+        height: 2.0,
+        phase: 4.5,
+        subtext: 'AI/ML debugging & demo pitch architecture'
+    },
+    {
+        id: 'judged',
+        stat: '2+',
+        label: 'JUDGED',
+        badge: '⚖️ OFFICIAL JURY',
+        tagline: 'Evaluating 100+ project submissions & code',
+        color: '#E63946',
+        bg: '#FFF5F5',
+        x: 2.8,
+        y: -1.2,
+        z: 0.1,
+        width: 2.7,
+        height: 2.0,
+        phase: 6.0,
+        subtext: 'Assessing architecture, UX, and technical execution'
+    },
+];
+
+const HackathonStatCard = ({ config, onClick, isTouch, revealFactorRef, spreadFactorRef, timeRef }) => {
+    const outerGroupRef = useRef();
+    const innerGroupRef = useRef();
+    const [hovered, setHovered] = useState(false);
+
+    const targetScale = useRef(1.0);
+    const currentScale = useRef(1.0);
+    const targetMagnet = useRef({ x: 0, y: 0 });
+    const currentMagnet = useRef({ x: 0, y: 0 });
+
+    const positionScale = isTouch ? 0.65 : 1.0;
+    const sizeScale = isTouch ? 0.85 : 1.0;
+    const spreadScale = isTouch ? 0.5 : 1.0;
+
+    const baseX = config.x * positionScale;
+    const baseWidth = config.width * sizeScale;
+    const baseHeight = config.height * sizeScale;
+
+    const handlePointerOver = (e) => {
+        if (isTouch) return;
+        e.stopPropagation();
+        setHovered(true);
+        document.body.style.cursor = 'pointer';
+    };
+
+    const handlePointerOut = (e) => {
+        if (isTouch) return;
+        e.stopPropagation();
+        setHovered(false);
+        document.body.style.cursor = 'auto';
+    };
+
+    useFrame((state, delta) => {
+        if (!outerGroupRef.current) return;
+
+        const time = timeRef.current;
+        const revealFactor = revealFactorRef.current;
+        const spreadFactor = spreadFactorRef.current;
+
+        const hoverScale = (hovered && !isTouch) ? 1.08 : 1.0;
+        targetScale.current = Math.max(targetScale.current, hoverScale);
+        currentScale.current = THREE.MathUtils.lerp(currentScale.current, targetScale.current, 10 * delta);
+        if (targetScale.current > hoverScale) {
+            targetScale.current = THREE.MathUtils.lerp(targetScale.current, hoverScale, 6 * delta);
+        }
+
+        currentMagnet.current.x = THREE.MathUtils.lerp(currentMagnet.current.x, targetMagnet.current.x, 8 * delta);
+        currentMagnet.current.y = THREE.MathUtils.lerp(currentMagnet.current.y, targetMagnet.current.y, 8 * delta);
+
+        const floatY = Math.sin(time * 0.7 + config.phase) * 0.15;
+        const tiltZ = Math.sin(time * 0.5 + config.phase) * 0.04;
+
+        const startY = config.y - 7;
+        const endY = config.y;
+        const currentY = startY + revealFactor * (endY - startY) + floatY;
+
+        const maxSpread = 12 * spreadScale;
+        let spreadX = 0;
+        if (config.x < -0.5) {
+            spreadX = -spreadFactor * maxSpread * (0.6 + Math.abs(config.x) / 5);
+        } else if (config.x > 0.5) {
+            spreadX = spreadFactor * maxSpread * (0.6 + Math.abs(config.x) / 5);
+        } else {
+            spreadX = 0;
+        }
+
+        const spreadY = config.isMaster ? spreadFactor * 2.5 : (config.y < 0 ? -spreadFactor * 2.0 : spreadFactor * 1.5);
+
+        outerGroupRef.current.position.set(baseX + spreadX, currentY + spreadY, config.z);
+        outerGroupRef.current.rotation.z = tiltZ;
+        const s = Math.max(0.001, revealFactor * sizeScale * currentScale.current);
+        outerGroupRef.current.scale.set(s, s, s);
+
+        if (innerGroupRef.current) {
+            innerGroupRef.current.position.set(currentMagnet.current.x, currentMagnet.current.y, 0);
+        }
+    });
+
+    const triggerClick = (e) => {
+        targetScale.current = 1.2;
+        onClick(e);
+    };
+
+    return (
+        <group ref={outerGroupRef} position={[baseX, config.y - 7, config.z]}>
+            <group
+                ref={innerGroupRef}
+                onClick={triggerClick}
+                onPointerOver={handlePointerOver}
+                onPointerOut={handlePointerOut}
+                onPointerMove={(e) => {
+                    if (hovered && outerGroupRef.current) {
+                        outerGroupRef.current.getWorldPosition(_tempVec3);
+                        targetMagnet.current.x = (e.point.x - _tempVec3.x) * 0.15;
+                        targetMagnet.current.y = (e.point.y - _tempVec3.y) * 0.15;
+                    }
+                }}
+            >
+                {/* Sketch border shadow */}
+                <mesh position={[0.04, -0.04, -0.002]}>
+                    <planeGeometry args={[baseWidth + 0.1, baseHeight + 0.1]} />
+                    <meshBasicMaterial color="#1a1a1a" transparent opacity={0.25} side={THREE.DoubleSide} />
+                </mesh>
+
+                {/* Hand-drawn sketch border */}
+                <mesh position={[0, 0, -0.001]}>
+                    <planeGeometry args={[baseWidth + 0.08, baseHeight + 0.08]} />
+                    <meshBasicMaterial color={hovered ? config.color : (config.isMaster ? '#E6A200' : '#1a1a1a')} side={THREE.DoubleSide} />
+                </mesh>
+
+                {/* Card face */}
+                <mesh position={[0, 0, 0]}>
+                    <planeGeometry args={[baseWidth, baseHeight]} />
+                    <meshBasicMaterial color={hovered ? '#FFFFFF' : config.bg} side={THREE.DoubleSide} />
+                </mesh>
+
+                {/* Badge ribbon */}
+                <Text
+                    position={[0, baseHeight / 2 - 0.28, 0.02]}
+                    fontSize={baseHeight * 0.095}
+                    color={config.color}
+                    anchorX="center"
+                    anchorY="middle"
+                    font="/fonts/CabinSketch-Bold.ttf"
+                >
+                    {config.badge}
+                </Text>
+
+                {/* Stat number */}
+                <Text
+                    position={[0, 0.16, 0.02]}
+                    fontSize={config.isMaster ? baseHeight * 0.38 : baseHeight * 0.34}
+                    color="#1a1a1a"
+                    anchorX="center"
+                    anchorY="middle"
+                    font="/fonts/RubikScribble-Regular.ttf"
+                >
+                    {config.stat}
+                </Text>
+
+                {/* Label */}
+                <Text
+                    position={[0, -0.28, 0.02]}
+                    fontSize={baseHeight * 0.125}
+                    color="#1a1a1a"
+                    anchorX="center"
+                    anchorY="middle"
+                    font="/fonts/CabinSketch-Bold.ttf"
+                >
+                    {config.label}
+                </Text>
+
+                {/* Tagline */}
+                <Text
+                    position={[0, -0.56, 0.02]}
+                    fontSize={baseHeight * 0.075}
+                    color="#555555"
+                    anchorX="center"
+                    anchorY="middle"
+                    font="/fonts/CabinSketch-Regular.ttf"
+                >
+                    {config.tagline}
+                </Text>
+
+                {/* Subtext */}
+                <Text
+                    position={[0, -baseHeight / 2 + 0.22, 0.02]}
+                    fontSize={baseHeight * 0.068}
+                    color={hovered ? config.color : '#888888'}
+                    anchorX="center"
+                    anchorY="middle"
+                    font="/fonts/CabinSketch-Bold.ttf"
+                >
+                    {hovered ? "CLICK TO EXPLORE ↗" : config.subtext}
+                </Text>
+            </group>
+        </group>
+    );
+};
+
+/**
+ * HACKATHONS Milestone - The Battle Arena in the Clouds
+ */
+const HackathonsMilestone = ({ z, scrollProgressRef }) => {
+    const isTouch = isTouchDevice();
+    const { openOverlay } = useScene();
+    const groupRef = useRef();
+    const coffeeRef = useRef();
+    const ideaRef = useRef();
+
+    const revealFactorRef = useRef(0);
+    const spreadFactorRef = useRef(0);
+    const timeRef = useRef(0);
+
+    const buttonTexture = useLoader(THREE.TextureLoader, '/textures/about/button.webp');
+    const buttonPaintedTexture = useLoader(THREE.TextureLoader, isTouch ? '/textures/about/button.webp' : '/textures/about/button_painted.webp');
+    const coffeeTexture = useLoader(THREE.TextureLoader, '/textures/corridor/decorations/coffee_cup.webp');
+    const ideaTexture = useLoader(THREE.TextureLoader, '/textures/corridor/decorations/idea_process.webp');
+
+    buttonTexture.colorSpace = THREE.SRGBColorSpace;
+    buttonPaintedTexture.colorSpace = THREE.SRGBColorSpace;
+    coffeeTexture.colorSpace = THREE.SRGBColorSpace;
+    ideaTexture.colorSpace = THREE.SRGBColorSpace;
+
+    const buttonLegacyAspect = 894 / 208;
+    const buttonHeight = 0.38;
+    const buttonWidth = buttonHeight * buttonLegacyAspect;
+
+    const audioRef = useRef();
+    const { globalVolume, isMuted } = useAudio();
+
+    const playClickSound = () => {
+        if (audioRef.current) {
+            const vol = isMuted ? 0 : BALLOON_AUDIO_SETTINGS.volume * globalVolume;
+            audioRef.current.setVolume(vol);
+            if (audioRef.current.isPlaying) audioRef.current.stop();
+            audioRef.current.play();
+        }
+    };
+
+    const handleCardClick = (e) => {
+        e.stopPropagation();
+        playClickSound();
+        openOverlay(AWARDS_DATA.sotm);
+    };
+
+    useFrame((state) => {
+        if (!groupRef.current) return;
+
+        const scrollProgress = scrollProgressRef?.current || 0;
+        const worldZ = ROOM_Z + scrollProgress + z;
+        groupRef.current.visible = worldZ < MILESTONE_CORRIDOR_CLIP_Z;
+        if (!groupRef.current.visible) return;
+
+        const time = state.clock.elapsedTime;
+        timeRef.current = time;
+
+        const distanceZ = z + scrollProgress - 55;
+
+        // Reveal
+        const revealStart = -110;
+        const revealEnd = -30;
+        let newReveal = 0;
+        if (distanceZ > revealStart && distanceZ < revealEnd) {
+            newReveal = (distanceZ - revealStart) / (revealEnd - revealStart);
+            newReveal = Math.min(1, Math.max(0, newReveal));
+            newReveal = 1 - Math.pow(1 - newReveal, 2.5);
+        } else if (distanceZ >= revealEnd) {
+            newReveal = 1;
+        }
+        revealFactorRef.current = newReveal;
+
+        // Spread
+        const spreadStart = -70;
+        const spreadEnd = -45;
+        let newSpread = 0;
+        if (distanceZ > spreadStart && distanceZ < spreadEnd) {
+            newSpread = (distanceZ - spreadStart) / (spreadEnd - spreadStart);
+            newSpread = Math.min(1, Math.max(0, newSpread));
+            newSpread = newSpread * newSpread;
+        } else if (distanceZ >= spreadEnd) {
+            newSpread = 1;
+        }
+        spreadFactorRef.current = newSpread;
+
+        if (coffeeRef.current) {
+            coffeeRef.current.position.y = 0.4 + Math.sin(time * 0.8) * 0.2;
+            coffeeRef.current.rotation.z = Math.sin(time * 0.5) * 0.08;
+        }
+        if (ideaRef.current) {
+            ideaRef.current.position.y = 0.6 + Math.sin(time * 0.7 + 1.5) * 0.2;
+            ideaRef.current.rotation.z = Math.sin(time * 0.4 + 1) * -0.08;
+        }
+    });
+
+    return (
+        <group ref={groupRef} position={[0, 0, z]}>
+            {/* Title */}
+            <Text
+                position={[0, 4.2, 0.2]}
+                fontSize={1.25}
+                color="#1a1a1a"
+                anchorX="center"
+                anchorY="middle"
+                font="/fonts/RubikScribble-Regular.ttf"
+            >
+                HACKATHONS
+            </Text>
+
+            {/* Subtitle */}
+            <Text
+                position={[0, 3.45, 0.2]}
+                fontSize={0.36}
+                color="#333333"
+                anchorX="center"
+                anchorY="middle"
+                font="/fonts/CabinSketch-Bold.ttf"
+            >
+                THE BATTLEGROUND • 90+ ALL-NIGHTERS & MVPS
+            </Text>
+
+            {/* Motto */}
+            <Text
+                position={[0, 2.95, 0.2]}
+                fontSize={0.26}
+                color="#666666"
+                anchorX="center"
+                anchorY="middle"
+                font="/fonts/CabinSketch-Regular.ttf"
+                fontStyle="italic"
+            >
+                "Eat. Sleep. Code. Ship. Repeat. 🔥"
+            </Text>
+
+            {/* Overhead Paper Airplane */}
+            <group position={[0, 4.9, 0.3]} rotation={[0.08, -0.35, 0.05]}>
+                <PaperAirplane scale={0.65} color="#ffffff" />
+            </group>
+
+            {/* Floating Coffee Cup doodle on left */}
+            <group ref={coffeeRef} position={[-5.0, 0.4, 0.1]}>
+                <mesh>
+                    <planeGeometry args={[1.3, 1.3]} />
+                    <meshBasicMaterial map={coffeeTexture} transparent side={THREE.DoubleSide} />
+                </mesh>
+                <Text
+                    position={[0, -0.75, 0.05]}
+                    fontSize={0.22}
+                    color="#2a2a2a"
+                    anchorX="center"
+                    anchorY="middle"
+                    font="/fonts/CabinSketch-Bold.ttf"
+                >
+                    3 AM COFFEE ☕
+                </Text>
+            </group>
+
+            {/* Floating Idea Process lightbulb doodle on right */}
+            <group ref={ideaRef} position={[5.0, 0.6, 0.1]}>
+                <mesh>
+                    <planeGeometry args={[1.4, 1.4]} />
+                    <meshBasicMaterial map={ideaTexture} transparent side={THREE.DoubleSide} />
+                </mesh>
+                <Text
+                    position={[0, -0.75, 0.05]}
+                    fontSize={0.22}
+                    color="#2a2a2a"
+                    anchorX="center"
+                    anchorY="middle"
+                    font="/fonts/CabinSketch-Bold.ttf"
+                >
+                    MVP SHIPPING 💡
+                </Text>
+            </group>
+
+            {/* 5 Interactive Stat Cards */}
+            {HACKATHON_CARDS_DATA.map((card) => (
+                <HackathonStatCard
+                    key={card.id}
+                    config={card}
+                    onClick={handleCardClick}
+                    isTouch={isTouch}
+                    revealFactorRef={revealFactorRef}
+                    spreadFactorRef={spreadFactorRef}
+                    timeRef={timeRef}
+                />
+            ))}
+
+            {/* Central Action Button */}
+            <group position={[0, -2.6, 0.15]}>
+                <AwardButton
+                    onClick={handleCardClick}
+                    texture={buttonTexture}
+                    paintedTexture={buttonPaintedTexture}
+                    width={buttonWidth * 1.55}
+                    height={buttonHeight * 1.25}
+                    position={[0, 0, 0]}
+                    label="EXPLORE HACKATHONS ↗"
+                    fontSize={0.21}
+                />
+            </group>
+
+            {/* Audio */}
+            <PositionalAudio
+                ref={audioRef}
+                url="/sounds/baloonpoop.mp3"
+                distanceModel="exponential"
+                rolloffFactor={BALLOON_AUDIO_SETTINGS.rolloff}
+                refDistance={BALLOON_AUDIO_SETTINGS.distance}
+                loop={false}
+            />
+        </group>
+    );
 };
 
 /**
@@ -999,7 +1547,7 @@ const AwardsMilestone = ({ z, scrollProgressRef }) => {
                     anchorY="middle"
                     font="/fonts/CabinSketch-Bold.ttf"
                 >
-                    {awardsData.sotm.count || '70+'}
+                    {awardsData.sotm.count || '90+'}
                 </Text>
             </group>
 

@@ -26,9 +26,10 @@ export const AUDIO_SETTINGS = {
 // Using CHUNK_LENGTH to create looping story (every ~40 units restarts)
 const STORY_MILESTONES = [
     { id: 'intro', position: [0, 0, -15], type: 'intro', title: 'SARTHAK SINGHANIYA', subtitle: '< AI Architect x TechNeekX Boss ⚡ />' },
-    { id: 'awards', position: [0, 0, -55], type: 'awards', title: 'TROPHIES & LOOT', subtitle: 'HackBio IIT Mandi Champ 🏆 • 70+ Hackathon Speedruns • 5x Internships' },
-    { id: 'journey', position: [0, 0, -95], type: 'journey', title: 'THE LORE', subtitle: 'B.Tech AI Grind @ BBDU • 100+ Member Dev Guild Leader' },
-    { id: 'skills', position: [0, 0, -135], type: 'skills', title: 'TECH LOADOUT', subtitle: 'Agentic AI • GenAI Magic • RAG • PyTorch • React • Python' },
+    { id: 'hackathons', position: [0, 0, -55], type: 'hackathons', title: 'HACKATHON SECTOR', subtitle: '90+ Participations • 3+ Wins • 6+ Organized • 3+ Mentored • 2+ Judged' },
+    { id: 'awards', position: [0, 0, -95], type: 'awards', title: 'TROPHIES & LOOT', subtitle: 'HackBio IIT Mandi Champ 🏆 • 90+ Hackathons • 5x Internships' },
+    { id: 'journey', position: [0, 0, -135], type: 'journey', title: 'THE LORE', subtitle: 'B.Tech AI Grind @ BBDU • 100+ Member Dev Guild Leader' },
+    { id: 'skills', position: [0, 0, -175], type: 'skills', title: 'TECH LOADOUT', subtitle: 'Agentic AI • GenAI Magic • RAG • PyTorch • React • Python' },
 ];
 
 const AboutRoom = ({ showRoom, onReady, isExiting, isWarmup }) => {
@@ -260,7 +261,7 @@ const AboutRoom = ({ showRoom, onReady, isExiting, isWarmup }) => {
             <InfiniteSkyManager scrollProgressRef={scrollPosition} />
 
             {/* === SKY BACKDROP === */}
-            <mesh position={[0, 0, -200]}>
+            <mesh position={[0, 0, -350]}>
                 <planeGeometry args={[300, 150]} />
                 <meshBasicMaterial color="#87CEEB" side={THREE.DoubleSide} />
             </mesh>

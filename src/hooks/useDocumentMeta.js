@@ -18,7 +18,7 @@ const ROOM_META = {
     about: {
         path: '/about',
         title: 'About — Sarthak Singhaniya (AI Wizard)',
-        description: 'Discover the lore of Sarthak Singhaniya — AI Engineer, 70+ Hackathon speedrunner, and Founder @ TechNeekX. 30+ projects cooked.',
+        description: 'Discover the lore of Sarthak Singhaniya — AI Engineer, 90+ Hackathons (3+ Wins, 6+ Organized, 3+ Mentored, 2+ Judged), and Founder @ TechNeekX. 30+ projects cooked.',
     },
     gallery: {
         path: '/gallery',

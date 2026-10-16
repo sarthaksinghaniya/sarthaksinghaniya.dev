@@ -372,8 +372,23 @@ const ContentCard = ({ content, isOpen, onClose, isMobile }) => {
 
     const defaultHackathonSections = [
         {
-            sectionTitle: 'WINNERS',
+            sectionTitle: 'WINNERS (3+)',
             items: [{ name: 'HackBio — IIT Mandi', achievement: 'WINNER', badge: 'WINNER', institution: 'IIT Mandi', category: 'Hackathon / Innovation', isWinner: true, description: 'Winner at HackBio, demonstrating technical problem-solving, innovation and rapid product development.', url: 'https://drive.google.com/drive/u/0/folders/1CBeJ9os9s92ZQOpbHguHTmKQ0fOCLsYK' }]
+        },
+        {
+            sectionTitle: 'ORGANIZED & LED (6+)',
+            items: [
+                { name: 'Kalpathon Hackathon', achievement: 'ORGANIZER & LEAD', badge: 'LEAD ORGANIZER', organizer: 'Kalpathon / TechNeekX', category: 'National Hackathon', description: 'Led and organized Kalpathon! Spearheading national builder challenges, live hacking, and open-source project showcases.', url: 'https://github.com/topics/kalpathonhackathon' },
+                { name: 'Innvedx Hackathon', achievement: 'HOST & DIRECTOR', badge: 'DIRECTOR', organizer: 'Innvedx Ecosystem', category: 'Innovation Hackathon', description: 'Directed and hosted the Innvedx Hackathon ecosystem, uniting student builders, AI innovators, and rapid shipping sprints.', url: 'https://github.com/topics/innvedxhackathon' },
+                { name: 'TNX Codathon & Workshops', achievement: 'FOUNDER & HOST', badge: 'FOUNDER', organizer: 'TechNeekX Community', category: 'Community Hackathons', description: 'Organized internal coding marathons, AI build sprints, and startup ideation challenges for 100+ developer community members.', url: 'https://teamtechneekx.netlify.app' }
+            ]
+        },
+        {
+            sectionTitle: 'JUDGING & MENTORSHIP',
+            items: [
+                { name: 'Official Hackathon Judge (2 Hackathons)', achievement: 'OFFICIAL JURY (2x)', badge: 'OFFICIAL JURY', category: 'Hackathon Jury / Evaluation', description: 'Served as an official Judge across 2 major hackathons, evaluating 100+ AI agents, system architectures, UI/UX, and live pitch demos.', url: 'https://www.linkedin.com/in/sarthak-singhaniya-a4ab9a323' },
+                { name: 'Technical Mentor (3 Hackathons)', achievement: 'TECHNICAL MENTOR (3x)', badge: 'OFFICIAL MENTOR', category: 'Engineering Mentorship', description: 'Mentored participant teams across 3 hackathons, guiding builders through rapid MVP prototyping, AI/ML pipeline debugging, and pitch preparation.', url: 'https://www.linkedin.com/in/sarthak-singhaniya-a4ab9a323' }
+            ]
         },
         {
             sectionTitle: 'FINALISTS',
@@ -384,7 +399,7 @@ const ContentCard = ({ content, isOpen, onClose, isMobile }) => {
             ]
         },
         {
-            sectionTitle: 'IIT / NATIONAL LEVEL',
+            sectionTitle: 'IIT / NATIONAL PARTICIPATIONS (90+)',
             items: [
                 { name: 'Bharatiya Antariksh Hackathon — ISRO', achievement: 'PARTICIPANT', badge: 'ISRO • NATIONAL LEVEL', organizer: 'ISRO / Hack2Skill', category: 'Space Technology • Innovation', description: 'Participated in a national-level space technology innovation challenge.', url: 'https://drive.google.com/drive/u/0/folders/1CBeJ9os9s92ZQOpbHguHTmKQ0fOCLsYK' },
                 { name: "Xpecto'26 — IIT Mandi", achievement: 'HACKATHON PARTICIPANT', badge: 'HACKATHON PARTICIPANT', institution: 'IIT Mandi', project: 'FractureFusion AI', technologies: ['AI', 'ML', 'Deep Learning', 'Computer Vision'], description: 'Worked on an AI-driven fracture detection solution using advanced deep-learning approaches.', url: 'https://drive.google.com/drive/u/0/folders/1CBeJ9os9s92ZQOpbHguHTmKQ0fOCLsYK' },
@@ -399,8 +414,8 @@ const ContentCard = ({ content, isOpen, onClose, isMobile }) => {
         }
     ];
 
-    const displayTitle = isProfile ? 'Sarthak Singhaniya' : (isHackathon ? '70+ Hackathons & Competitions' : (isCertificate ? 'Awards & Certifications' : content.title));
-    const displaySubtitle = isProfile ? 'AI/ML Developer • Software Developer • Founder @ TechNeekX' : (isHackathon ? 'Competing, building and solving real-world problems across AI, technology, entrepreneurship and innovation.' : content.subtitle);
+    const displayTitle = isProfile ? 'Sarthak Singhaniya' : (isHackathon ? (content.title || '90+ Hackathons & Competitions') : (isCertificate ? 'Awards & Certifications' : content.title));
+    const displaySubtitle = isProfile ? 'AI/ML Developer • Software Developer • Founder @ TechNeekX' : (isHackathon ? (content.subtitle || 'Competing, building, judging, mentoring and organizing across 90+ hackathons in AI, tech & innovation.') : content.subtitle);
     const displayLabel = isProfile ? 'ECOSYSTEM' : (isHackathon ? 'COMPETITIONS' : (isCertificate ? 'CREDENTIALS' : label));
 
     return (

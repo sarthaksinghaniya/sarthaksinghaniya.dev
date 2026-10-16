@@ -34,7 +34,7 @@ Driven AI Engineer and Full-Stack Developer specializing in Generative AI, LLM i
 
 I am an AI Engineer and Full-Stack Developer with a strong focus on Generative AI, LLM applications, and Agentic AI. I am deeply passionate about building robust startup products and solving real-world problems through intelligent technology.
 
-Currently pursuing my B.Tech in CSE (Artificial Intelligence) at Babu Banarasi Das University, I balance rigorous academics with intense hands-on development. With over 70+ hackathons under my belt, I thrive in rapid prototyping and high-pressure environments, consistently transforming ideas into functional MVPs in record time.
+Currently pursuing my B.Tech in CSE (Artificial Intelligence) at Babu Banarasi Das University, I balance rigorous academics with intense hands-on development. With over 90+ hackathons under my belt (3+ Wins, 6+ Organized, 3+ Mentored, 2+ Judged), I thrive in rapid prototyping and high-pressure environments, consistently transforming ideas into functional MVPs in record time.
 
 Beyond code, I am the Founder and Community Lead of TechNeekX, where I manage a thriving community of over 100+ developers, organizing technical events, networking sessions, and the TNX Codathon. I believe in fostering innovation and empowering the next generation of engineers.
 
@@ -81,7 +81,7 @@ These are displayed as portfolio/game-style stats and should be treated as self-
 - **Player class:** AI Engineer
 - **Guild:** TechNeekX Community
 - **Projects built/deployed:** 30+
-- **Hackathons:** 75+
+- **Hackathons:** 90+ (3+ Wins, 6+ Organized, 3+ Mentored, 2+ Judged)
 - **Algorithms solved:** 150+ on LeetCode
 - **Community members:** 100+
 - **Unstop challenges:** 300+

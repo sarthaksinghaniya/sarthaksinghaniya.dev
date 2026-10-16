@@ -110,6 +110,14 @@ const StoryMilestone = ({
                     subtitleColor: '#4a4a4a',
                     decorColor: '#e0e0e0'
                 };
+            case 'hackathons':
+                return {
+                    titleSize: 1.5,
+                    titleColor: '#2a2a2a',
+                    subtitleSize: 0.35,
+                    subtitleColor: '#666666',
+                    decorColor: '#ff6b6b'
+                };
             case 'awards':
                 return {
                     titleSize: 1.5,
